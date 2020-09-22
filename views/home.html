@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="static/js/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+    <meta charset="utf-8" />
+    <title>王者荣耀信息采集系统</title>
+    <style type="text/css">
+        body,
+        dl,
+        dd,
+        ul,
+        ol,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        form {
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 100%;
+        }
+
+        em,
+        i,
+        b {
+            font-style: normal;
+        }
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #363636;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            border-radius: 2px 2px 2px 2px;
+            height: 91px;
+            width: 91px;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-size: 100%;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        td,
+        th,
+        ul,
+        ol {
+            padding: 0;
+        }
+        cite {
+            font-style: normal;
+        }
+        /*------header------*/
+
+        body {
+            max-width: 1920px;
+            margin: 0 auto;
+            background-color: #EFEFEF;
+
+        }
+        .header{
+            height: 110px;
+            width: 100%;
+            background-color: #171823;
+            color: #D8D8DC;
+            float: left;
+            position: fixed;
+            top: 0px;
+            opacity: 0.8;
+        }
+        .header:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #leftTitle{
+            float: left;
+            margin: 20px 1%;
+
+        }
+        #leftTitle h1{
+            font-size: xx-large;
+        }
+        #leftTitle p{
+            line-height: 50px;
+            text-indent: 3em;
+        }
+        #rightTitle{
+            float: right;
+            margin-right: 2%;
+            margin-top: 2%;
+        }
+        .clearfix{
+            margin-top: 110px;
+            width: 100%;
+            background-color: #DB9E3F;
+
+        }
+        .clearfix li{
+            display: block;
+            height: 100px;
+            width: 33.33333333%;
+            line-height: 100px;
+            color: whitesmoke;
+            float: left;
+            background-color: #DB9E3F;
+            color: white;
+            text-align: center;
+        }
+        .clearfix li a{
+            color: white;
+            font-size: 35px;
+        }
+
+        /*----body------*/
+        .centerbody #leftcenter ul{
+            float: left;
+            margin-left: 30px;
+            height: 50px;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .centerbody #leftcenter ul li{
+            display: inline-block;
+            width: 12%;
+            height: 50px;
+            padding: 5px;
+            line-height: 60px;
+            text-align: center;
+            border-bottom: solid 1px gray;
+            background-color: white ;
+            color: #DB9E3F;
+
+        }
+        .centerbody #rightcenter ul{
+            background-color: gainsboro;
+            width: 85%;
+            float: left;
+            margin-left: 3%;
+            padding-left: 20px;
+            padding-right: 10px;
+
+        }
+        .centerbody #leftcenter li:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .centerbody #leftcenter ul li:hover{
+            cursor: pointer;
+            background-color: #171823;
+            border: solid 3px yellow;
+            color: white;
+        }
+        .centerbody #rightcenter ul li{
+            display: inline-block;
+            width: 95px;
+            height: 95px;
+            margin: 15px 15px;
+            border-radius: 2px 2px 2px 2px;
+        }
+        .centerbody #rightcenter ul li p{
+            margin: 3px;
+            text-align: center;
+            font: normal normal 20px "微软雅黑";
+        }
+    </style>
+</head>
+
+<body>
+<div class="header">
+   <a herf = "//pvp.qq.com/m/index.shtml"><img style="float: left; margin-top: 15px;margin-left: 10%;" src="./static/img/topTitle.PNG"></a>
+    <div id="leftTitle">
+        <h1 style="color: white">王者荣耀信息采集系统</h1>
+        <p>GoLang项目实战</p>
+    </div>
+    <div id="rightTitle">
+        <p style="color:white;">欢迎您 :  {{.AdminName}}</p>
+    </div>
+</div>
+<ul class="clearfix">
+    <li class="">
+        <a href="//pvp.qq.com/m/index.shtml">首页</a>
+    </li>
+    <!-- <li>
+        <a href="//pvp.qq.com/m/m201606/video.shtml" onclick="PTTSendClick('headNav','video','视频');">
+            视频
+        </a>
+    </li> -->
+    <li>
+        <a href="//pvp.qq.com/m/m201706/strategycenter.shtml">
+            攻略中心
+        </a>
+    </li>
+    <li>
+        <a href="//pvp.qq.com/m/m201706/matchindex.shtml">
+            赛事中心
+        </a>
+    </li>
+</ul>
+<div class="centerbody">
+    <div id="leftcenter">
+        <ul>
+            <li class="_blank" id="allheros">全部</li>
+            <li class="_blank" id="tanke">坦克</li>
+            <li class="_blank" id="zhanshi">战士</li>
+            <li class="_blank" id="cike">刺客</li>
+            <li class="_blank" id="fashi">法师</li>
+            <li class="_blank" id="sheshou">射手</li>
+            <li class="_blank" id="fuzhu">辅助</li>
+        </ul>
+    </div>
+    <div id="rightcenter">
+        <ul id="herosinfo">
+{{/*            <  li><img src="static/img/bg_machao.jpg"width="200px" height="200px"></li>*/}}
+        </ul>
+    </div>
+</div>
+<div class="foot">
+
+</div>
+</body>
+<script type="text/javascript">
+    // var herosUL = document.getElementById("herosinfo")
+    $(document).ready(function () {
+        {{range .AllHeros}}
+        $("#herosinfo").append("<li class = \"hero{{.Hero_type}}\"id = \"hero{{.Ename}}\"><a href =\"https://pvp.qq.com/web201605/herodetail/{{.Ename}}.shtml\" ><img  src=\"static/img/{{.Ename}}.jpg\"/><p>\n" +
+            " {{.Cname}}\n" +
+            " </p></a></li>")
+        {{end}}
+        //所有英雄展示
+        $("#allheros").click(function () {
+            $(".hero1,.hero2,.hero3,.hero4,.hero5,.hero6").show()
+
+        })
+        //坦克展示
+        $("#tanke").click(function () {
+            $(".hero1,.hero2,.hero3,.hero4,.hero5,.hero6").hide()
+            $(".hero3").show()
+
+        })
+        $("#zhanshi").click(function () {
+            $(".hero1,.hero2,.hero3,.hero4,.hero5,.hero6").hide()
+            $(".hero1").show()
+
+        })
+        $("#cike").click(function () {
+            $(".hero1,.hero2,.hero3,.hero4,.hero5,.hero6").hide()
+            $(".hero4").show()
+
+        })
+        $("#fashi").click(function () {
+            $(".hero1,.hero2,.hero3,.hero4,.hero5,.hero6").hide()
+            $(".hero2").show()
+        })
+        $("#sheshou").click(function () {
+            $(".hero1,.hero2,.hero3,.hero4,.hero5,.hero6").hide()
+            $(".hero5").show()
+        })
+        $("#fuzhu").click(function () {
+            $(".hero1,.hero2,.hero3,.hero4,.hero5,.hero6").hide()
+            $(".hero6").show()
+        })
+    })
+
+</script>
+
+</html>
