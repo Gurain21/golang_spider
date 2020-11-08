@@ -44,11 +44,14 @@ func Login(writer http.ResponseWriter, request *http.Request) {
 		//检查错误
 		check_error.CheckErr(err)
 		//从数据库中获取heros切片
-		Heros, err := db_mysql.QueryAllHeros()
+		heros, err := db_mysql.QueryAllHeros()
 		//检查错误
 		check_error.CheckErr(err)
 		//创建一个名为showdata结构体,将管理员名称,所有的heros信息,放到这个结构体中
-		showData := entity.HomeShowData{AdminName: adminName, AllHeros: Heros}
+		showData := entity.HomeShowData{
+			AdminName: adminName,
+			AllHeros:  heros,
+		}
 		//将结构体showData传入模板
 		temp.Execute(writer, showData)
 	}
